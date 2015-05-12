@@ -19,6 +19,7 @@ def upgrade():
     # blacklisted_ips is an OLTP table
     op.create_table('blacklisted_ips',
                     sa.Column('ip', sa.String(length=16), nullable=False),
+                    sa.Column('last_seen', sa.DateTime(), server_default=sa.func.now(), nullable=False),
                     sa.Column('created_at', sa.DateTime(), server_default=sa.func.now(), nullable=False),
                     sa.PrimaryKeyConstraint('ip'))
 

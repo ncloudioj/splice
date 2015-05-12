@@ -65,7 +65,7 @@ class AdgroupSite(db.Model):
 class BlacklistedIP(db.Model):
     __tablename__ = "blacklisted_ips"
 
-    ip = db.Column(db.String(1024), nullable=False)
+    ip = db.Column(db.String(1024), nullable=False, primary_key=True)
     created_at = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
 
 

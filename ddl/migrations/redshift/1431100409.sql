@@ -3,6 +3,7 @@ BEGIN;
 CREATE TABLE blacklisted_ips
 (
     ip VARCHAR(16) NOT NULL,
+    last_seen TIMESTAMP DEFAULT SYSDATE NOT NULL,
     created_at TIMESTAMP DEFAULT SYSDATE NOT NULL,
     PRIMARY KEY (ip)
 );
