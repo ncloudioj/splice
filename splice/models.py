@@ -65,7 +65,8 @@ class AdgroupSite(db.Model):
 class BlacklistedIP(db.Model):
     __tablename__ = "blacklisted_ips"
 
-    ip = db.Column(db.String(1024), nullable=False, primary_key=True)
+    ip = db.Column(db.String(64), nullable=False, primary_key=True)
+    last_seen = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
     created_at = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
 
 
@@ -115,7 +116,7 @@ impression_stats_daily = db.Table(
 
 blacklist_stats_daily = db.Table(
     'blacklist_stats_daily',
-    db.Column('ip', db.String(16), nullable=False),
+    db.Column('ip', db.String(64), nullable=False),
     db.Column('date', db.Date, nullable=False),
     db.Column('impressions', db.Integer, nullable=False, server_default="0"),
     db.Column('clicks', db.Integer, nullable=False, server_default="0"),

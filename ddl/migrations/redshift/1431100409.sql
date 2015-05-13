@@ -2,7 +2,7 @@ BEGIN;
 
 CREATE TABLE blacklisted_ips
 (
-    ip VARCHAR(16) NOT NULL,
+    ip VARCHAR(64) NOT NULL,
     last_seen TIMESTAMP DEFAULT SYSDATE NOT NULL,
     created_at TIMESTAMP DEFAULT SYSDATE NOT NULL,
     PRIMARY KEY (ip)
@@ -10,7 +10,7 @@ CREATE TABLE blacklisted_ips
 
 CREATE TABLE blacklist_stats_daily
 (
-    ip VARCHAR(16) NOT NULL,
+    ip VARCHAR(64) NOT NULL,
     date DATE NOT NULL,
     impressions INTEGER DEFAULT '0' NOT NULL,
     clicks INTEGER DEFAULT '0' NOT NULL,
